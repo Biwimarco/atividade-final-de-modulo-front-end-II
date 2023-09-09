@@ -31,7 +31,6 @@ body {
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: cover;
-    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -39,8 +38,12 @@ body {
     z-index: -1;
 }
 
+.containerCards {
+display: flex;
+}
+
 footer {
-    position: absolute;
+    position: relative;
     bottom: 0;
     left: 0;
     right: 0;
