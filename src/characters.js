@@ -1,31 +1,30 @@
 function getCharacters() {
-    try {
-    fetch('https://rickandmortyapi.com/api/character', {
-        method: 'GET'
+  try {
+    fetch("https://rickandmortyapi.com/api/character", {
+      method: "GET",
     })
-    .then(res => res.json())
-    .then(function(json){
+      .then((res) => res.json())
+      .then(function (json) {
+        let cardsContainer = document.querySelector(".cards");
 
-        let containerCards = document.querySelector('.container-cards');
+        json.results.forEach(function (results) {
+          let card = document.createElement("div");
+          card.classList.add("card");
 
-        json.results.map(function(results){
-            containerCards.innerHTML += `
-            <img src="${results.image}" alt="${results.name}">
-            <h2>${results.name}</h2>
-            <p>Status: ${results.status}</p>
-            <p>Species: ${results.species}</p>
-            <p>Type: ${results.type}</p>
-            <p>Gender: ${results.gender}</p>
-            <p>Origin: ${results.origin.name}</p>
-            <p>Location: ${results.location.name}</p>
-            <p>Episodes: ${results.episode.length}</p>
-            <p>Created: ${results.created}</p>
-            `
-        })
-    })
-    } catch (error) {
-        
-    }
+          card.innerHTML = `
+              <img src="${results.image}" alt="${results.name}">
+              <h2>${results.name}</h2>
+              <p><strong>Status:</strong> <span>${results.status}</span></p>
+              <p><strong>Species:</strong> <span>${results.species}</span></p>
+              <p><strong>Gender:</strong> <span>${results.gender}</span></p>
+              <p><strong>Origin:</strong> <span>${results.origin.name}</span></p>
+              <p><strong>Location:</strong> <span>${results.location.name}</span></p>
+              <p><strong>Episodes:</strong> <span>${results.episode.length}</span></p>
+            `;
+          cardsContainer.appendChild(card);
+        });
+      });
+  } catch (error) {}
 }
 
-getCharacters()
+getCharacters();

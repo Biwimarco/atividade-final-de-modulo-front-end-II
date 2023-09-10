@@ -1,58 +1,70 @@
 * {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #000000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #00ff00;
+  border-radius: 10px;
 }
 
 header {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .title {
-    font-size: 50px;
-    font-family:'Courier New', Courier, monospace;
-    text-shadow: 2px 2px 4px rgba(43, 255, 0, 0.726);
-    padding-top: 30px;
+  font-size: 50px;
+  font-family: "Courier New", Courier, monospace;
+  text-shadow: 2px 2px 4px rgba(43, 255, 0, 0.726);
+  padding-top: 30px;
 }
 
 #iconHeader {
-    position: fixed;
-    top: 10px;
-    right: 10px;
-    width: 70px;
-    height: 70px;
-    border: 4px solid rgb(43, 255, 0, 0.726);
-    border-radius: 70%;
-    cursor: pointer;
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  width: 70px;
+  height: 70px;
+  border: 4px solid rgb(43, 255, 0, 0.726);
+  border-radius: 70%;
+  cursor: pointer;
 }
 
 body {
-    background-image: url(../images/background1.png);
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-size: cover;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-}
-
-.containerCards {
-display: flex;
+  background-image: url(../images/background1.png);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow-x: hidden;
 }
 
 footer {
-    position: relative;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    text-align: center;
-    padding: 10px;
-    background-color: rgb(65, 65, 65);
+  position: relative;
+  top: 40px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  padding: 10px;
+  background-color: rgb(65, 65, 65);
+  font-size: 20px;
 }
 
 #gitFooter {
-    text-decoration: none;
-    color: rgba(43, 255, 0, 0.726);
+  text-decoration: none;
+  color: rgba(43, 255, 0, 0.726);
 }
