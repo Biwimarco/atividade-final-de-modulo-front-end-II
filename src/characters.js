@@ -29,7 +29,9 @@ function getCharacters() {
           cardsContainer.appendChild(card);
         });
       });
-  } catch (error) {}
+  } catch (error) {
+    alert("Cannot GET!");
+  }
 }
 
 getCharacters();
@@ -53,6 +55,7 @@ function openModal(character) {
   modalContent.style.background =
     "linear-gradient(0deg, rgba(39,51,40,1) 47%, rgba(25,131,59,1) 100%)";
   modalContent.style.textAlign = "center";
+  modalContent.style.fontFamily = 'Cambria, Cochin, Georgia, Times, "Times New Roman", serif';
 
   modal.addEventListener("click", closeModal);
 }
@@ -62,4 +65,57 @@ function closeModal() {
   modal.style.display = "none";
 
   modal.removeEventListener("click", closeModal);
+}
+
+const searchInput = document.getElementById("searchInput");
+const searchButton = document.getElementById("searchButton");
+
+searchButton.addEventListener("click", searchCharacters);
+
+function searchCharacters() {
+  const searchTerm = searchInput.value.toLowerCase();
+
+  if (searchTerm.trim() === "") {
+    alert("Please enter a character name to search.");
+    return;
+  }
+
+  const cardsContainer = document.querySelector(".cards");
+  cardsContainer.innerHTML = "";
+
+  fetch(`https://rickandmortyapi.com/api/character/?name=${searchTerm}`)
+    .then((res) => {
+      return res.json();
+    })
+    .then(function (json) {
+      if (!json.results) {
+        alert("No characters found with that name.");
+        return;
+      }
+
+      json.results.forEach(function (character) {
+        const card = document.createElement("div");
+        card.classList.add("card");
+
+        card.innerHTML = `
+          <img src="${character.image}" alt="${character.name}">
+          <h2>${character.name}</h2>
+          <p><strong>Status:</strong> <span>${character.status}</span></p>
+          <p><strong>Species:</strong> <span>${character.species}</span></p>
+          <p><strong>Gender:</strong> <span>${character.gender}</span></p>
+          <p><strong>Origin:</strong> <span>${character.origin.name}</span></p>
+          <p><strong>Location:</strong> <span>${character.location.name}</span></p>
+          <p><strong>Episodes:</strong> <span>${character.episode.length}</span></p>
+        `;
+
+        card.addEventListener("click", function () {
+          openModal(character);
+        });
+
+        cardsContainer.appendChild(card);
+      });
+    })
+    .catch(function (error) {
+      alert(error.message);
+    });
 }

@@ -39,6 +39,30 @@ header {
   cursor: pointer;
 }
 
+.searchField {
+display: flex;
+justify-content: center;
+padding: 40px 0;
+}
+
+.inpSearch{
+    width: 40vh;
+    height: 30px;
+    background-color: transparent;
+    text-align: center;
+    border-color: rgb(43, 255, 0, 0.726);
+    border-radius: 10px;
+}
+
+.btnSearch {
+    width: 40px;
+    font-size: 25px;
+    background-color: transparent;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    border: 0;
+}
+
 body {
   background-image: url(../images/background1.png);
   background-attachment: fixed;
