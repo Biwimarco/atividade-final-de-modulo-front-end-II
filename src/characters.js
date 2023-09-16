@@ -55,13 +55,15 @@ function openModal(character) {
   modalContent.style.background =
     "linear-gradient(0deg, rgba(39,51,40,1) 47%, rgba(25,131,59,1) 100%)";
   modalContent.style.textAlign = "center";
-  modalContent.style.fontFamily = 'Cambria, Cochin, Georgia, Times, "Times New Roman", serif';
+  modalContent.style.fontFamily =
+    'Cambria, Cochin, Georgia, Times, "Times New Roman", serif';
 
   modal.addEventListener("click", closeModal);
 }
 
 function closeModal() {
   const modal = document.getElementById("modal");
+
   modal.style.display = "none";
 
   modal.removeEventListener("click", closeModal);
