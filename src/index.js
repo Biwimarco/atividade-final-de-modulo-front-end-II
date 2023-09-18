@@ -3,7 +3,7 @@ let index = 0;
 
 function switchImg() {
   const body = document.body;
-  body.style.backgroundImage = `url(../images/${arrImgs[index]})`;
+  body.style.backgroundImage = `url(./images/${arrImgs[index]})`;
   index = (index + 1) % arrImgs.length;
 }
 
