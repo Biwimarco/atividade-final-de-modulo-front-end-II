@@ -1,11 +1,16 @@
-function getCharacters() {
+let currentPage = 1;
+let totalPages = 1;
+
+function getCharacters(page) {
   try {
-    fetch("https://rickandmortyapi.com/api/character", {
+    fetch(`https://rickandmortyapi.com/api/character?page=${page}`, {
       method: "GET",
     })
       .then((res) => res.json())
       .then(function (json) {
-        let cardsContainer = document.querySelector(".cards");
+        
+        const cardsContainer = document.querySelector(".cards");
+        cardsContainer.innerHTML = "";
 
         json.results.forEach(function (results) {
           let card = document.createElement("div");
@@ -28,13 +33,33 @@ function getCharacters() {
 
           cardsContainer.appendChild(card);
         });
+
+        totalPages = json.info.pages;
       });
   } catch (error) {
     alert("Cannot GET!");
   }
 }
 
-getCharacters();
+getCharacters(currentPage);
+
+const nextButton = document.getElementById("next");
+const previousButton = document.getElementById("previous");
+
+nextButton.addEventListener("click", function () {
+  if (currentPage < totalPages) {
+    currentPage++;
+    getCharacters(currentPage);
+  }
+});
+
+previousButton.addEventListener("click", function () {
+  if (currentPage > 1) {
+    currentPage--;
+    getCharacters(currentPage);
+  }
+});
+
 
 function openModal(character) {
   const modal = document.getElementById("modal");
